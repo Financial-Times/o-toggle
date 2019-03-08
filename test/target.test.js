@@ -1,8 +1,8 @@
 /* eslint-env mocha, sinon, proclaim */
-import proclaim from 'proclaim';
-import sinon from 'sinon/pkg/sinon';
+const proclaim = require('proclaim');
+const sinon = require('sinon/pkg/sinon');
 
-import OToggle from './../main';
+const OToggle = require('./../main');
 
 describe("Target", () => {
 
