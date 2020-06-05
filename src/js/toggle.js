@@ -68,6 +68,12 @@ class Toggle {
 		if (this.toggleEl.nodeName === 'A') {
 			this.toggleEl.setAttribute('role', 'button');
 			this.toggleEl.addEventListener('keydown', handleSpaceKeydown.bind(this));
+			// If a user drags their mouse slightly when trying to interact with the toggle
+			// it will trigger the 'drag and drop' functionality.
+			// Regular buttons prevent this and ensure as long as the mouse is still above the
+			// button that the click will register.
+			// This will help users with motor impairments and those less familiar with a trackpad.
+			this.toggleEl.setAttribute('draggable', 'false');
 		}
 
 		this.toggle = this.toggle.bind(this);

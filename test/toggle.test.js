@@ -167,6 +167,15 @@ describe("oToggle", () => {
 			
 					proclaim.equal(linkToggleEl.getAttribute('aria-expanded'), 'true');
 				});
+				it("prevents dragging of the toggle", () => {
+					fixtures.reset();
+					fixtures.toggleAsALink();
+					const linkToggleEl = document.getElementById("linkToggle");
+	
+					new OToggle(linkToggleEl);
+			
+					proclaim.equal(linkToggleEl.getAttribute('draggable'), 'false');
+				});
 			})
 		});
 
