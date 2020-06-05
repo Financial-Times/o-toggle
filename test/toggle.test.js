@@ -5,6 +5,16 @@ import * as fixtures from './helpers/fixtures';
 
 import OToggle from './../main';
 
+export function dispatch (target, type, eventProperties) {
+	const event = new Event(type, { bubbles: true });
+	for (const property in eventProperties) {
+		if (eventProperties.hasOwnProperty(property)) {
+			event[property] = eventProperties[property];
+		}
+	}
+	target.dispatchEvent(event);
+}
+
 describe("oToggle", () => {
 
 	describe("init behaviour", () => {
@@ -113,18 +123,6 @@ describe("oToggle", () => {
 				proclaim.isTrue(targetSpy.calledOnce);
 			});
 
-			it("adds a role=button if the toggle element is a link", () => {
-				fixtures.reset();
-				fixtures.toggleAsALink();
-				const linkToggleEl = document.getElementById("linkToggle");
-
-				proclaim.isFalse(linkToggleEl.hasAttribute('role'));
-
-				new OToggle(linkToggleEl);
-				proclaim.equal(linkToggleEl.getAttribute('role'), 'button');
-
-			});
-
 			it("sets aria-expanded to false on the toggle", () => {
 				new OToggle(toggleEl);
 
@@ -144,6 +142,32 @@ describe("oToggle", () => {
 
 				proclaim.isTrue(toggleEl.hasAttribute('data-o-toggle--js'));
 			});
+
+			describe('toggle element is a link', () => {
+				it("adds a role=button", () => {
+					fixtures.reset();
+					fixtures.toggleAsALink();
+					const linkToggleEl = document.getElementById("linkToggle");
+	
+					proclaim.isFalse(linkToggleEl.hasAttribute('role'));
+	
+					new OToggle(linkToggleEl);
+					proclaim.equal(linkToggleEl.getAttribute('role'), 'button');
+				});
+				it("activates when pressing space", () => {
+					fixtures.reset();
+					fixtures.toggleAsALink();
+					const linkToggleEl = document.getElementById("linkToggle");
+	
+					new OToggle(linkToggleEl);
+			
+					proclaim.equal(linkToggleEl.getAttribute('aria-expanded'), 'false');
+			
+					dispatch(linkToggleEl, 'keydown', { keyCode: 32 });
+			
+					proclaim.equal(linkToggleEl.getAttribute('aria-expanded'), 'true');
+				});
+			})
 		});
 
 		describe("where the contents of a function are set declaratively, instead of giving a function name", () => {

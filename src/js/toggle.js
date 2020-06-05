@@ -1,5 +1,15 @@
 import Target from './target';
 
+// Some assistive technologies, like screen readers, suggest to press 'space'
+// when interacting with a link with a role of 'button'.
+// We need to ensure that we replicate this functionality that exists on a button element.
+function handleSpaceKeydown (e) {
+	// if the pressed key is a space, we'll simulate a click
+	if (e.keyCode === 32) {
+		this.toggle(e);
+	}
+}
+
 class Toggle {
 
 	constructor(toggleEl, config) {
@@ -57,6 +67,7 @@ class Toggle {
 
 		if (this.toggleEl.nodeName === 'A') {
 			this.toggleEl.setAttribute('role', 'button');
+			this.toggleEl.addEventListener('keydown', handleSpaceKeydown.bind(this));
 		}
 
 		this.toggle = this.toggle.bind(this);
@@ -104,6 +115,9 @@ class Toggle {
 	}
 
 	destroy() {
+		if (this.toggleEl.nodeName === 'A') {
+			this.toggleEl.removeEventListener('keydown', handleSpaceKeydown);
+		}
 		this.toggleEl.removeEventListener('click', this.toggle);
 		this.toggleEl.removeAttribute('aria-expanded');
 		this.toggleEl.removeAttribute('role');
