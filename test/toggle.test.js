@@ -148,9 +148,9 @@ describe("oToggle", () => {
 					fixtures.reset();
 					fixtures.toggleAsALink();
 					const linkToggleEl = document.getElementById("linkToggle");
-	
+
 					proclaim.isFalse(linkToggleEl.hasAttribute('role'));
-	
+
 					new OToggle(linkToggleEl);
 					proclaim.equal(linkToggleEl.getAttribute('role'), 'button');
 				});
@@ -158,25 +158,25 @@ describe("oToggle", () => {
 					fixtures.reset();
 					fixtures.toggleAsALink();
 					const linkToggleEl = document.getElementById("linkToggle");
-	
+
 					new OToggle(linkToggleEl);
-			
+
 					proclaim.equal(linkToggleEl.getAttribute('aria-expanded'), 'false');
-			
+
 					dispatch(linkToggleEl, 'keydown', { keyCode: 32 });
-			
+
 					proclaim.equal(linkToggleEl.getAttribute('aria-expanded'), 'true');
 				});
 				it("prevents dragging of the toggle", () => {
 					fixtures.reset();
 					fixtures.toggleAsALink();
 					const linkToggleEl = document.getElementById("linkToggle");
-	
+
 					new OToggle(linkToggleEl);
-			
+
 					proclaim.equal(linkToggleEl.getAttribute('draggable'), 'false');
 				});
-			})
+			});
 		});
 
 		describe("where the contents of a function are set declaratively, instead of giving a function name", () => {
