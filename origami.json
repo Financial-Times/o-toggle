@@ -46,7 +46,7 @@
 			"hidden": true,
 			"title": "Anchor toggle",
 			"name": "anchor",
-      "template": "demos/src/anchor.mustache",
+			"template": "demos/src/anchor.mustache",
 			"description": "Demonstrate toggle use on anchors"
 		}
   ]
