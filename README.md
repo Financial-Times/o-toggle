@@ -72,14 +72,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
 Or by calling the `init` method:
 ```js
-import Toggle from 'o-toggle';
+import Toggle from '@financial-times/o-toggle';
 Toggle.init();
 ```
 
 Toggles may also be constructed individually without `data-o-component="o-toggle"`:
 
 ```js
-import Toggle from 'o-toggle';
+import Toggle from '@financial-times/o-toggle';
 const toggleEl = document.querySelector('.o-toggle');
 const toggle = new Toggle(toggleEl, {
 		target: '.my-target',
