@@ -10,7 +10,7 @@
         "stylelint": "^13.7.0",
         "stylelint-config-origami-component": "^1.0.4"
     },
-    "main": "main.js",
+    "browser": "main.js",
     "description": "Utility that provides toggle (show/hide) behaviour to a <button> or <a> tag and a target.",
     "publishConfig": {
         "registry": "http://localhost:4873"
