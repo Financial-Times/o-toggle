@@ -1,5 +1,8 @@
 {
     "name": "@financial-times/o-toggle",
+    "version": "100.0.0-7",
+    "description": "Utility that provides toggle (show/hide) behaviour to a <button> or <a> tag and a target.",
+    "browser": "main.js",
     "devDependencies": {
         "eslint": "^7.8.1",
         "eslint-config-origami-component": "^2.1.0",
@@ -10,10 +13,7 @@
         "stylelint": "^13.7.0",
         "stylelint-config-origami-component": "^1.0.4"
     },
-    "browser": "main.js",
-    "description": "Utility that provides toggle (show/hide) behaviour to a <button> or <a> tag and a target.",
     "publishConfig": {
         "registry": "http://localhost:4873"
-    },
-    "version": "100.0.0-7"
+    }
 }
